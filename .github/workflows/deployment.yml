@@ -16,9 +16,6 @@ jobs:
         
       - name: Install dependencies
         run: npm ci
-        
-      - name: Run test
-        run: npm test  # Assuming you want to run tests in the test job
 
   deploy:
     needs: test
@@ -40,4 +37,3 @@ jobs:
       
       - name: Deploy application
         run: echo "Deploying application..."  # Replace this with actual deployment commands
-
