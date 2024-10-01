@@ -21,6 +21,7 @@ jobs:
         run: npm test  # Assuming you want to run tests in the test job
 
   deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
