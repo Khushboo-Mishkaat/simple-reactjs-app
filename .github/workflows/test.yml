@@ -1,23 +1,21 @@
-name: Test Project          # The name of the GitHub Actions workflow.
-on: push                    # Trigger the workflow on any push to the repository.
-
-jobs:                       # Define the jobs in this workflow.
-  test:                     # Job name (you can give it any name, here it's "test").
-    runs-on: ubuntu-latest   # Specify the environment to run this job, here it's the latest Ubuntu version.
-
-    steps:                  # Define the steps for this job.
+name: Test Project
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
       - name: Get Code
-        uses: actions/checkout@v3   # Checkout the repository code from GitHub.
-
-      - name: install NodeJS
-        uses: actions/setup-node@v3 # Use a pre-built action to set up Node.js in the environment.
+        uses: actions/checkout@v3
         with:
-          node-version: 18          # Specify the Node.js version (v18 in this case).
-
-      - name: install dependencies
-        run: npm ci                 # Run the npm command `npm ci` to install dependencies from the lock file.
+          node-version: '20'      # Optional: Future-proofing by specifying Node.js 20
+      
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'      # Explicitly use Node.js version 20
+      
+      - name: Install dependencies
+        run: npm ci
 
       - name: Run test
-        run: npm test               # Run the `npm test` command to execute tests in the project.
-
-    
+        run: npm test
